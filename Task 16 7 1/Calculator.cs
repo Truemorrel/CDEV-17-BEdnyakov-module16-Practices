@@ -23,7 +23,7 @@ namespace Task_16_7_1
             return a * b;
         }
 
-        public int Division(int a, int b)
+        public int Devision(int a, int b)
         {
             return a / b;
         }

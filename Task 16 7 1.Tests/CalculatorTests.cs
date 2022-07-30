@@ -1,13 +1,14 @@
-﻿using NUnit;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Task_16_7_1;
+using NUnit;
 
 namespace Task_16_7_1.Tests
 {
+    [TestFixture]
     public class CalculatorTests
     {
         Calculator _calculator;
@@ -34,10 +35,16 @@ namespace Task_16_7_1.Tests
             Assert.AreEqual(40, _calculator.Multiplication(8, 5));
         }
 
-        [Test]
         public void DivisionMustRecurnCorrectValue()
         {
-            Assert.AreEqual(2, _calculator.Division(14, 5));
+            Assert.AreEqual(2, _calculator.Devision(14, 5));
+        }
+
+        [Test, Pairwise]
+        public void DevisionByZeroMustThrowException([Values(9, 6, 4)] int a, 
+            [Values(0)] int b)
+        {
+            Assert.Throws<DivideByZeroException>(() => _calculator.Devision(a, b));
         }
     }
 }
